@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 class="text-center">Oblicz swoje punkty z zachowania</h1>
+<div class="grid container text-center">
+    <div class="g-col-4">
+    <form id="dane">
+        <div class="card mb-3">
+        <div class="card-body">
+            <label>Wybierz pozycje z punktami ujemnymi:</label><br>
+            <select id="pozycje" multiple></select>
+            
+        </div>
+        </div>
+        <div class="card mb-3">
+        <div class="card-body">
+            <label>Wybierz pozycje z punktami dodatnimi:</label><br>
+            <select id="pozycje2" multiple></select>
+            </select>
+
+
+    <div class="suma-punktow" >  
+        <div class="suma-ujemna">
+            <h2>Ilość otrzymanych punktów ujemnych:</h2>
+            <p id="wynik"></p>
+        </div>
+
+        <div class="suma-dodatnia">
+            <h2>Ilość otrzymanych punktów dodatnich:</h2>
+            <p id="wynik2"></p>
+        </div>
+    </div>  
+    </form>
+    </div>
+</div>
+<script src="jafka_projekt.js"></script>
+</body>
+</html>
