@@ -1,3 +1,6 @@
+// let suma_ujemna = 0;
+// let suma_dodatnia = 0;
+
 function dane(d) {
     const f = document.getElementById("pozycje");
     const wynik = document.getElementById('wynik');
@@ -7,7 +10,6 @@ function dane(d) {
             let z = '';
             const value = d[key];
             z = value.punkty;
-
             f.innerHTML += "<option value='" + key + "'>" + value.pozycja + " [" + z + "]</option>";
         }
     }
@@ -19,16 +21,21 @@ function dane(d) {
         for (let i = 0; i < wybraneOpcje.length; i++) {
             const klucz = wybraneOpcje[i].value;
             const punkty = d[klucz] && d[klucz].punkty;
-
-            if (typeof punkty === 'number') {
-                sumaPunktow += punkty;
-            } else if (typeof punkty === 'object') {
-                sumaPunktow += Object.values(punkty).reduce((a, b) => a + b, 0);
-            }
+            sumaPunktow += punkty;
         }
-        wynik.textContent = Math.round(sumaPunktow);
+
+        // suma_ujemna = sumaPunktow; 
+        // let roznica = suma_dodatnia - suma_ujemna; 
+        // console.log(roznica);
+
+        if (sumaPunktow >= 400) {
+            wynik.textContent = "Masz przejebane!";
+        } else {
+            wynik.textContent = Math.round(sumaPunktow*(-1));
+        }
     });
-}
+};
+
 
 //===============================================
 
@@ -47,22 +54,25 @@ function dane2(d) {
     }
 
     f.addEventListener('change', () => {
-        let sumaPunktow = 0;
+        let sumaPunktow = 100;
         const wybraneOpcje = f.selectedOptions;
 
         for (let i = 0; i < wybraneOpcje.length; i++) {
             const klucz = wybraneOpcje[i].value;
             const punkty = d[klucz] && d[klucz].punkty;
-
-            if (typeof punkty === 'number') {
-                sumaPunktow += punkty;
-            } else if (typeof punkty === 'object') {
-                sumaPunktow += Object.values(punkty).reduce((a, b) => a + b, 0);
-            }
+            sumaPunktow += punkty;
         }
 
+        // suma_dodatnia = sumaPunktow;
+        // let roznica = suma_dodatnia + suma_ujemna; 
+        // console.log(roznica);
+        // wynik3.textContent = roznica;
+
+
         wynik.textContent = Math.round(sumaPunktow);
+
     });
+    
 }
 
 
@@ -216,6 +226,7 @@ const daneJSON1 = {
     "punkty": 10
   }
 };
+
 
 dane(daneJSON);
 dane2(daneJSON1);
